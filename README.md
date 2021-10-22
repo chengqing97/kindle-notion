@@ -1,13 +1,18 @@
 # kindle-notion
 
+
+
+> **Currently only work on Linux**
+
 ### Description:
 
 Kindle-Notion is a command line tool to sync your Kindle Clippings to your Notion database.
 
+
 ### Usage:
-
+```
 kindle-notion [options]
-
+```
 ### options:
 
 -h --help Show help.
