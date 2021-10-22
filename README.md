@@ -26,6 +26,7 @@ Your database should have columns exactly named and typed as follow:
 
 
 ## Usage
+Connect your kindle to your computer and open it in the file browser to make sure it is mounted.
 ```
 kindle-notion
 ```
