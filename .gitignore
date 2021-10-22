@@ -117,8 +117,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# built
-built/
-
 # user data
 userData.json
