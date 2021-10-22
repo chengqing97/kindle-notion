@@ -29,4 +29,5 @@ Your database should have columns exactly named and typed as follow:
 ```
 kindle-notion
 ```
-And then follow the message prompted in the command line.
+![kindle-notion demo](https://user-images.githubusercontent.com/73209378/138439737-9f7a5b18-5b78-4103-bf5f-3494d6012348.png)
+
