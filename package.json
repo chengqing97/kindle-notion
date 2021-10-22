@@ -1,0 +1,28 @@
+{
+  "name": "kindle-notion",
+  "version": "1.0.0",
+  "description": "Sync your Kindle clippings to Notion.",
+  "main": "src/index.js",
+  "bin": {
+    "kindle-notion": "bin/kindle-notion"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@notionhq/client": "^0.4.4",
+    "arg": "^5.0.1",
+    "chalk": "^4.1.2",
+    "cli-progress": "^3.9.1",
+    "esm": "^3.2.25",
+    "inquirer": "^8.2.0",
+    "moment": "^2.29.1",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^8.1.3",
+    "typescript": "^4.4.4"
+  }
+}
