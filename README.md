@@ -1,5 +1,5 @@
 # Kindle-Notion
-Kindle-Notion is a command line tool to sync your Kindle Clippings to your Notion database.
+Kindle-Notion is a command line tool to sync or import your Kindle Clippings to your Notion database.
 
 ## Installation
 > Currently only work on Linux
