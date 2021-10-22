@@ -13,7 +13,7 @@ sudo npm link
 ```
 
 ## Notion Configuration
-Follow Step 1 and Step 2 in this [guide](https://developers.notion.com/docs/getting-started) and note down your "Internal Integration Token" and database id.
+Follow Step 1 and Step 2 in this <a href="https://developers.notion.com/docs/getting-started" target="_blank">guide</a> and note down your "Internal Integration Token" and database id.
 Your database should have columns exactly named and typed as follow:
 | Column Name | Property Type |
 | ----------- | ----------- |
@@ -27,12 +27,6 @@ Your database should have columns exactly named and typed as follow:
 
 ## Usage
 ```
-kindle-notion [Flag]
+kindle-notion
 ```
-
-| Flag | Description |
-| ----------- | ----------- |
-| -h --help | Show help. |
-| -a --all | Import all clippings regardless whether they have been previously imported. |
-
-### 
+And then follow the message prompted in the command line.
