@@ -1,16 +1,16 @@
 {
   "name": "kindle-notion",
   "version": "1.0.0",
-  "description": "Sync your Kindle clippings to Notion.",
+  "description": "Sync your Kindle Clippings to Notion database.",
   "main": "src/index.js",
   "bin": {
     "kindle-notion": "bin/kindle-notion"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Cheng Qing",
+  "license": "MIT",
   "dependencies": {
     "@notionhq/client": "^0.4.4",
     "arg": "^5.0.1",
