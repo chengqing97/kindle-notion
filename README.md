@@ -31,5 +31,5 @@ Connect your kindle to your computer and open it in the file browser to make sur
 kindle-notion
 ```
 ![kindle-notion demo](https://user-images.githubusercontent.com/73209378/138439737-9f7a5b18-5b78-4103-bf5f-3494d6012348.png)
-> The database id and key will automatically save on your local machine, so you don't need to input it next time.
+> The database id and key will automatically save on your local machine, so you don't need to input it next time :wink:
 
