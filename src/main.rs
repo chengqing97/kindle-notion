@@ -1,5 +1,6 @@
 use home;
-use regex::Regex;
+use hyper::Client;
+use notion_kindle;
 use std::error::Error;
 use std::fs;
 use std::io::ErrorKind;
@@ -31,66 +32,22 @@ fn run() -> Result<(), Box<dyn Error>> {
     let mut clippings_array: Vec<&str> = clippings_string.split("\r\n==========\r\n").collect();
     clippings_array.pop();
 
-    println!("array0: {}", clippings_array[1]);
-    println!("lenght: {}", clippings_array.len());
-
     let mut clippings_json: Vec<Clipping> = vec![];
 
     for item in clippings_array {
-        let lines: Vec<&str> = item.lines().collect();
-        println!("lines: {:?}", lines[0]);
+        let clipping = Clipping {
+            book: notion_kindle::get_book(item),
+            author: notion_kindle::get_author(item),
+            content: notion_kindle::get_content(item),
+            kind: notion_kindle::get_kind(item),
+            page: notion_kindle::get_page(item),
+            location: notion_kindle::get_location(item),
+            date: notion_kindle::get_date(item),
+        };
 
-        clippings_json.push(Clipping {
-            book: String::from(lines[0].split(" (").next().unwrap_or("")),
-            author: String::from(
-                Regex::new(r"\(([^()]*)\)")
-                    .unwrap()
-                    .find(lines[0])
-                    .map(|x| x.as_str())
-                    .unwrap_or("")
-                    .replace(&['(', ')'][..], ""),
-            ),
-            content: String::from(lines[3]),
-            kind: String::new(),
-            page: String::new(),
-            location: String::new(),
-            date: String::new(),
-            // kind: String::from(
-            //     Regex::new(r"(?<=Your\s)(\w+)")
-            //         .unwrap()
-            //         .find(lines[1])
-            //         .map(|x| x.as_str())
-            //         .unwrap_or(""),
-            // ),
-            // page: String::from(
-            //     Regex::new(r"(?<=page\s)(\S+)")
-            //         .unwrap()
-            //         .find(lines[1])
-            //         .map(|x| x.as_str())
-            //         .unwrap_or(""),
-            // ),
-            // location: String::from(
-            //     Regex::new(r"(?<=Location\s)(\S+)")
-            //         .unwrap()
-            //         .find(lines[1])
-            //         .map(|x| x.as_str())
-            //         .unwrap_or(""),
-            // ),
-            // date: String::from(
-            //     Regex::new(r"(?<=Added on\s).*")
-            //         .unwrap()
-            //         .find(lines[1])
-            //         .map(|x| x.as_str())
-            //         .unwrap_or(""),
-            // ),
-            // kind: lines[1].match(/(?<=Your\s)(\w+)/)[0],
-            // page: lines[1].match(/(?<=page\s)(\S+)/) ? lines[1].match(/(?<=page\s)(\w+)/)[0] : "",
-            // location: lines[1].match(/(?<=Location\s)(\S+)/)[0],
-            // date: dateParser(lines[1].match(/(?<=Added on\s).*/)[0]),
-        })
+        println!("clipping: {:#?}", clipping);
+        clippings_json.push(clipping);
     }
-
-    println!("json: {:#?}", clippings_json);
 
     Ok(())
 }
@@ -103,4 +60,18 @@ struct Clipping {
     page: String,
     location: String,
     date: String,
+}
+
+#[tokio::main]
+async fn upload() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+    let client = Client::new();
+
+    // Parse an `http::Uri`...
+    let uri = "http://httpbin.org/ip".parse()?;
+
+    // Await the response...
+    let mut resp = client.get(uri).await?;
+
+    println!("Response: {}", resp.status());
+    Ok(())
 }
